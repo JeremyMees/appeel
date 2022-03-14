@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html,
+body {
+  height: 100%;
+  background-color: #040d19;
+  font-family: "Roboto", sans-serif;
+  color: #f7f7f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header__title {
+  font-weight: 900;
+}
+
+.header__title {
+  display: inline-block;
+  background: linear-gradient(to right, #30cfd0, #b3a0fc);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

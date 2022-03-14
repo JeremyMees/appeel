@@ -1,0 +1,30 @@
+.commits__flex-container--center {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.commit-card__flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-inputgroup {
+  max-width: 20rem;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

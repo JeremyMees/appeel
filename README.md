@@ -1,27 +1,15 @@
 # Appeel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karma-runner.github.io)(Firefox).
+If you want to check the code coverage go to the root project and navigate to ./coverage/appeel and open index.html file in the browser.
 
-## Running end-to-end tests
+## ES6+ functions
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Filter -> I used the filter function to filter the commits on there messages. The reason that I used the filter function is beceause it's the most compact way to filter an array that I know of.
+- Arrow functions -> I use arrow functions all the time. I think it's the cleanest way to write functions. It removes unnecessary syntax that you have to write with a normal function

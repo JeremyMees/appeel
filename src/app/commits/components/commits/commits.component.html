@@ -1,0 +1,53 @@
+<div class="header">
+  <h1 class="header__title header__title--gradient">Commits</h1>
+
+  <span class="p-inputgroup">
+    <input
+      #filter
+      type="text"
+      pInputText
+      placeholder="Search"
+      (keyup)="onFilterCommits(filter.value)"
+    />
+    <button
+      [disabled]="filter.value.length === 0"
+      type="button"
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="onRemoveFilter()"
+    ></button>
+  </span>
+
+  <button
+    pButton
+    pRipple
+    label="Go back"
+    (click)="onGoBackToBranches()"
+  ></button>
+</div>
+
+<p-progressSpinner *ngIf="loading" class="spinner"></p-progressSpinner>
+
+<div class="commits__flex-container--center" *ngIf="!loading">
+  <p-card
+    [header]="commit.commit.message"
+    *ngFor="let commit of commits$ | async"
+    class="commit-card"
+  >
+    <div class="commit-card__flex-container">
+      <p>
+        <i class="pi pi-clock"></i>
+        {{ onFormatDate(commit.commit.committer.date) }}
+      </p>
+      <p>
+        <i class="pi pi-user"></i>
+        {{ commit.commit.committer.name }}
+      </p>
+      <p>
+        <i class="pi pi-comment"></i>
+        {{ commit.commit.message }}
+      </p>
+    </div>
+  </p-card>
+</div>
