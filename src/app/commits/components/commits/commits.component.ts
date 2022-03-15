@@ -84,11 +84,11 @@ export class CommitsComponent implements OnInit {
    */
   public onFormatDate(time: Date | string): string {
     const date: Date = new Date(time);
-    let day: string = String(date.getDate()).padStart(2, '0');
-    let month: string = String(date.getMonth() + 1).padStart(2, '0');
-    let year: number = date.getFullYear();
-    let hour: string = String(date.getHours()).padStart(2, '0');
-    let minute: string = String(date.getMinutes()).padStart(2, '0');
+    const day: string = String(date.getDate()).padStart(2, '0');
+    const month: string = String(date.getMonth() + 1).padStart(2, '0');
+    const year: number = date.getFullYear();
+    const hour: string = String(date.getHours()).padStart(2, '0');
+    const minute: string = String(date.getMinutes()).padStart(2, '0');
     return `${day}/${month}/${year} ${hour}:${minute}`;
   }
 }
