@@ -1,4 +1,14 @@
-<h1 class="header__title header__title--gradient">Branches</h1>
+<div class="header">
+  <h1 class="header__title header__title--gradient">Branches</h1>
+  <p-dropdown
+    (onChange)="onSetSortBranches()"
+    [(ngModel)]="selectedBranch"
+    [options]="sortOptions"
+    placeholder="Sort by"
+    [showClear]="true"
+  ></p-dropdown>
+</div>
+
 <div class="branches__flex-container" *ngIf="!loading">
   <p-card [header]="branch.name" *ngFor="let branch of branches$ | async">
     <div class="branch-card__flex-container">

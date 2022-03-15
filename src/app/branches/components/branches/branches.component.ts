@@ -3,7 +3,7 @@ import { BranchesService } from '../../services/branches.service';
 import { take } from 'rxjs/operators';
 import { Branch } from '../../models/branch.model';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { set } from 'src/app/store/branches/branches.actions';
 
@@ -15,6 +15,8 @@ import { set } from 'src/app/store/branches/branches.actions';
 export class BranchesComponent implements OnInit {
   branches$!: Observable<Branch[]>;
   loading: boolean = true;
+  sortOptions: string[] = ['Stars', 'Forks', 'Created', 'Updated'];
+  selectedBranch: string | undefined;
 
   constructor(
     private branchesService: BranchesService,
@@ -45,6 +47,47 @@ export class BranchesComponent implements OnInit {
 
   public onGoToCommits(branch: string): void {
     this.router.navigateByUrl(`branches/${branch}`);
+  }
+
+  public onSetSortBranches(): void {
+    switch (this.selectedBranch) {
+      case 'Forks':
+        this._onSortBranches('forks_count');
+        break;
+      case 'Stars':
+        this._onSortBranches('stargazers_count');
+        break;
+      case 'Created':
+        this._onSortBranches('created_at');
+        break;
+      case 'Updated':
+        this._onSortBranches('updated_at');
+        break;
+      default:
+        this.selectedBranch = undefined;
+        this.branches$ = this.store.select('branches');
+        break;
+    }
+  }
+
+  /**
+   * Sort array of branches by key value
+   * @param {string} sort key to sort by.
+   */
+  private _onSortBranches(sort: string): void {
+    this.branches$.pipe(take(1)).subscribe((branches: Branch[]) => {
+      const sortBranches = [...branches];
+      this.branches$ = of(
+        sortBranches.sort(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (a: { [key: string]: any }, b: { [key: string]: any }) => {
+            return sort === 'created_at' || sort === 'updated_at'
+              ? Date.parse(b[sort]) - Date.parse(a[sort])
+              : Number(b[sort]) - Number(a[sort]);
+          }
+        )
+      );
+    });
   }
 
   /**

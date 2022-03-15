@@ -87,7 +87,7 @@ describe('CommitsComponent', () => {
       });
     });
 
-    it('should see all commits', () => {
+    it('should show all commits', () => {
       component.onFilterCommits('');
       component.commits$.pipe(take(1)).subscribe((commits: Commit[]) => {
         expect(commits).toEqual([MOCK_COMMIT]);
